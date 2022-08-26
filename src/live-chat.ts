@@ -22,6 +22,7 @@ export class LiveChat extends EventEmitter {
     super()
     if ('channelId' in options) {
       this.channelId = options.channelId
+      console.log("channelId: " + this.channelId)
     } else if ('liveId' in options) {
       this.liveId = options.liveId
     } else {
