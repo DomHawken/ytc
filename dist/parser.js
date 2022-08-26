@@ -14,20 +14,7 @@ function parseThumbnailToImageItem(data, alt) {
     return;
 }
 function parseEmojiToImageItem(data) {
-    if (data.hasOwnProperty('emoji')) {
-        if (data.emoji.hasOwnProperty('image')) {
-            if (data.emoji.image.hasOwnProperty('thumbnails')) {
-                if (data.emoji.hasOwnProperty('shortcuts')) {
-                    if (data.emoji.shortcuts.length > 1) {
-                        return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
-                    }
-                }
-            }
-        }
-    }
-    else {
-        return;
-    }
+    return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
 }
 function parseMessages(runs) {
     return runs.map((run) => {

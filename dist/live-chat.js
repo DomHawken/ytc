@@ -15,9 +15,11 @@ class LiveChat extends events_1.EventEmitter {
         this.prevTime = Date.now();
         if ('channelId' in options) {
             this.channelId = options.channelId;
+            console.log("channelId: " + this.channelId);
         }
         else if ('liveId' in options) {
             this.liveId = options.liveId;
+            console.log("liveId: " + this.liveId);
         }
         else {
             throw TypeError("Required channelId or liveId.");
