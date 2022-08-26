@@ -1,0 +1,66 @@
+{
+  "name": "@wiggly/ytc",
+  "version": "1.1.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DomHawken/ytc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DomHawken/ytc/issues"
+  },
+  "homepage": "https://github.com/DomHawken/ytc#readme",
+  "author": {
+    "name": "Svallinn",
+    "email": "svallinn@protonmail.com"
+  },
+  "contributors": [
+    {
+      "name": "LinaTsukusu",
+      "email": "lina.tsukusu@gmail.com"
+    },
+    {
+      "name": "IcedCoffeee",
+      "url": "https://github.com/IcedCoffeee/"
+    },
+    {
+      "name": "DomHawken",
+      "url": "https://github.com/DomHawken/"
+    }
+  ],
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "NODE_ENV=production node dist",
+    "debug": "tsc && NODE_ENV=development node dist/debug.js",
+    "test": "jest --verbose"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "youtube",
+    "chat"
+  ],
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.9.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "tslib": "^1.11.1"
+  }
+}
