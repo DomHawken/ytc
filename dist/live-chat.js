@@ -31,19 +31,17 @@ class LiveChat extends events_1.EventEmitter {
         var liveRes = null;
         if (this.liveId) {
             liveRes = await axios_1.default.get(`https://www.youtube.com/watch?v=${this.liveId}`, { headers: LiveChat.headers });
-            console.log("liveRes.data: " + liveRes.data);
-            if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
-                this.emit('error', new Error("Live stream offline"));
-                return false;
-            }
+            // if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
+            //   this.emit('error', new Error("Live stream offline"))
+            //   return false
+            // }
         }
         if (this.channelId) {
             liveRes = await axios_1.default.get(`https://www.youtube.com/channel/${this.channelId}/live`, { headers: LiveChat.headers });
-            console.log("liveRes.data: " + liveRes.data);
-            if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
-                this.emit('error', new Error("Live stream offline"));
-                return false;
-            }
+            // if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
+            //   this.emit('error', new Error("Live stream offline"))
+            //   return false
+            // }
             this.liveId = liveRes.data.match(/"liveStreamabilityRenderer":{"videoId":"(\S*?)",/)[1];
         }
         if (!this.liveId || liveRes === null) {
