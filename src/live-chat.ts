@@ -35,6 +35,7 @@ export class LiveChat extends EventEmitter {
     var liveRes = null;
     if (this.liveId) {
       liveRes = await axios.get(`https://www.youtube.com/watch?v=${this.liveId}`, {headers: LiveChat.headers})
+      console.log("liveRes.data: " + liveRes.data)
       if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
         this.emit('error', new Error("Live stream offline"))
         return false
