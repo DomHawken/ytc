@@ -23,9 +23,11 @@ export class LiveChat extends EventEmitter {
     if ('channelId' in options) {
       this.channelId = options.channelId
       console.log("channelId: " + this.channelId)
+      console.log(`url: https://www.youtube.com/channel/${this.channelId}/live`)
     } else if ('liveId' in options) {
       this.liveId = options.liveId
       console.log("liveId: " + this.liveId)
+      console.log(`url: https://www.youtube.com/watch?v=${this.liveId}`)
     } else {
       throw TypeError("Required channelId or liveId.")
     }
@@ -44,6 +46,7 @@ export class LiveChat extends EventEmitter {
 
     if (this.channelId) {
       liveRes = await axios.get(`https://www.youtube.com/channel/${this.channelId}/live`, {headers: LiveChat.headers})
+      console.log("liveRes.data: " + liveRes.data)
       if (liveRes.data.match(/LIVE_STREAM_OFFLINE/)) {
         this.emit('error', new Error("Live stream offline"))
         return false
