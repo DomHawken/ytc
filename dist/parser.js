@@ -14,7 +14,22 @@ function parseThumbnailToImageItem(data, alt) {
     return;
 }
 function parseEmojiToImageItem(data) {
-    return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
+    if (data.hasOwnProperty('emoji')) {
+        if (data.emoji.hasOwnProperty('image')) {
+            if (data.emoji.image.hasOwnProperty('thumbnails')) {
+                if (data.emoji.hasOwnProperty('shortcuts')) {
+                    if (data.emoji.shortcuts.length > 1) {
+                        const emoChar = data.emoji.shortcuts.shift();
+                        return parseThumbnailToImageItem(data.emoji.image.thumbnails, emoChar);
+                    }
+                }
+            }
+        }
+    }
+    else {
+        return;
+    }
+    // return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift()!)
 }
 function parseMessages(runs) {
     return runs.map((run) => {
