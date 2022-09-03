@@ -29,7 +29,6 @@ function parseEmojiToImageItem(data) {
     else {
         return;
     }
-    // return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift()!)
 }
 function parseMessages(runs) {
     return runs.map((run) => {
