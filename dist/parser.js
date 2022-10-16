@@ -14,20 +14,11 @@ function parseThumbnailToImageItem(data, alt) {
     return;
 }
 function parseEmojiToImageItem(data) {
-    if (data.hasOwnProperty('emoji')) {
-        if (data.emoji.hasOwnProperty('image')) {
-            if (data.emoji.image.hasOwnProperty('thumbnails')) {
-                if (data.emoji.hasOwnProperty('shortcuts')) {
-                    if (data.emoji.shortcuts.length > 1) {
-                        const emoChar = data.emoji.shortcuts.shift();
-                        return parseThumbnailToImageItem(data.emoji.image.thumbnails, emoChar);
-                    }
-                }
-            }
-        }
-    }
-    else {
-        return;
+    var _a, _b, _c;
+    const thumbnailsValid = Array.isArray((_b = (_a = data === null || data === void 0 ? void 0 : data.emoji) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.thumbnails);
+    const shortcutsPresent = Array.isArray((_c = data === null || data === void 0 ? void 0 : data.emoji) === null || _c === void 0 ? void 0 : _c.shortcuts) && data.emoji.shortcuts.length > 0;
+    if (thumbnailsValid && shortcutsPresent) {
+        return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
     }
 }
 function parseMessages(runs) {
